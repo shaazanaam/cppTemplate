@@ -20,6 +20,9 @@ class Vector {
         T& operator[](int i);
         const T& operator[](int i) const;
         int size () const {return sz;}
+
 };
+
+#include "Vector.tpp"   //Include the implementation file here
 
 #endif //  _Vector_H_
