@@ -5,7 +5,7 @@
 
 // template is the C++'s version of the mathematical "for all T " or more precisely " for all types T"
 // the member functions might be defined similarly
-
+// the template typename T prefix makes T a parameter of the declaration it
 
 template<typename T>
 class Vector {
@@ -22,6 +22,8 @@ class Vector {
         int size () const {return sz;}
 
 };
+
+
 
 #include "Vector.tpp"   //Include the implementation file here
 

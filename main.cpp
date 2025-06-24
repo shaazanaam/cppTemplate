@@ -24,11 +24,23 @@ int main(){
     Vector<char*> vs2(17);
     f2(vs);
 
-    Less_than<int> less_than_10(10);
-    bool result = less_than_10(5);
+    Less_than<int> lti(10);
+    bool result = lti(5);
     std::cout<<std::boolalpha<<result<<std::endl;
 
-    Less_than<std::string> lts{"Backus"};
+    Less_than<std::string> lts{"Backus"}; //declaring and initializing the functor lts
+
+    void fct(int n, const std:: string & s){
+            bool b1 = lti(n);
+            bool b2 = lts(s);
+            std::cout<<std::boolapha<<b1<<std::endl;
+            std::cout<<std::boolalpha<<b2<<std::endl;
+    }
+    fct(10,"Backus");
+
+    //such function objects like the lti and the lts are used as arguments to algorithms 
+    
+
 
     bool b1 = lts("s");
     std::cout<<std::boolalpha<<b1<<std::endl;
@@ -78,5 +90,18 @@ void f(const Vector<int>& vec, const std::list<std::string>& lst, int x, const s
 {
     std::cout<<"number of values less than "<<x<<":"<<count(vec, Less_than<int>{x})<<'\n';
     std::cout<<"number of values less than "<<'s'<<":"<<count(lst,Less_than<std::string>{"s"})<<'\n';
+}
+
+// we have to define the Less_than separately from its use . That could be seen as inconvinient. Coonsequently there is 
+// a notation for implicitly generatirng function objects
+
+void f2(const Vector<int>& vec, const std::list<std::string>& lst, int x, const std::string& s)
+{
+    std::cout<<"number of values less than "<<x
+              <<":"<<count(vec,[&](int a){return a<x;})
+              <<'\n';
+    std::cout<<"number of values less than"<<'s'
+            <<":"<<count(lst,[&](const std::string& a){return a<s;})
+            <<'\n';
 }
 

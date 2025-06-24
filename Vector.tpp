@@ -1,4 +1,6 @@
 // Vector.tpp
+#include "Vector.h"
+
 template<typename T>
 Vector<T>::Vector(int s) {
     if (s < 0) throw std::length_error{"Vector: negative size"};
@@ -26,7 +28,8 @@ T& Vector<T>::operator[](int i){
 //functions
 template<typename T>
 T* begin(Vector<T>& x){
-    return &x[0];      //pointer to the first element.. remember that the [] operator returns the reference to the element at the location i
+    return &x[0];      //pointer to the first element.. remember that the [] operator returns the reference 
+                        //to the element at the location i
                        //however the reference to the element will be the address of that element 
 }
 
